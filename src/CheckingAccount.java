@@ -18,9 +18,10 @@ public class CheckingAccount extends Account{
     public void transfer(Account account, int amount) {
         if(balance >= amount) {
             if(amount > 0) {
-                balance -= amount;
-                account.addMoney(amount);
-                System.out.println("Указанная сумма '" + amount + "' переведена успешно. Баланс на счету: " + balance);
+                if(account.addMoney(amount)){
+                    balance -= amount;
+                    System.out.println("Указанная сумма '" + amount + "' переведена успешно. Баланс на счету: " + balance);
+                }
             } else {
                 System.out.println("Ошибка, сумма перевода отрицательное число.");
             }
@@ -29,12 +30,14 @@ public class CheckingAccount extends Account{
         }
     }
 
-    public void addMoney(int amount) {
+    public boolean addMoney(int amount) {
         if (amount > 0) {
             balance += amount;
             System.out.println("Счет пополнен, баланс на счету: " + balance);
+            return true;
         } else {
             System.out.println("Ошибка, сумма пополнения отрицательное число.");
+            return false;
         }
     }
 }
