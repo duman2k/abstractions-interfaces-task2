@@ -1,7 +1,4 @@
 public class SavingsAccount extends Account{
-    SavingsAccount(String id) {
-        super(id);
-    }
 
     @Override
     public void pay(int amount) {
@@ -10,11 +7,11 @@ public class SavingsAccount extends Account{
 
     @Override
     public void transfer(Account account, int amount) {
-        if (getBalance() - amount >= 0) {
+        if (balance - amount >= 0) {
             if(amount > 0) {
-                setBalance(getBalance() - amount);
-                account.setBalance(account.getBalance() + amount);
-                System.out.println("Указанная сумма '" + amount + "' переведена на счет " + account.getId() + ". Баланс на счету: " + getBalance());
+                balance -= amount;
+                account.addMoney(amount);
+                System.out.println("Указанная сумма '" + amount + "' переведена успешно. Баланс на счету: " + balance);
             } else {
                 System.out.println("Ошибка, сумма перевода отрицательное число.");
             }
@@ -26,8 +23,8 @@ public class SavingsAccount extends Account{
     @Override
     public void addMoney(int amount) {
         if (amount > 0) {
-            setBalance(getBalance() + amount);
-            System.out.println("Счет пополнен, баланс на счету: " + getBalance());
+            balance += amount;
+            System.out.println("Счет пополнен, баланс на счету: " + balance);
         } else {
             System.out.println("Ошибка, сумма пополнения отрицательное число.");
         }

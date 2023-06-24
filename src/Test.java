@@ -1,17 +1,17 @@
 public class Test {
     public static void main(String[] args) {
-        Account savingsAccount = new SavingsAccount("1111");
-        Account creditAccount = new CreditAccount("2222");
-        Account checkingAccount = new CheckingAccount("3333");
+        Account savingsAccount = new SavingsAccount();
+        Account creditAccount = new CreditAccount();
+        Account checkingAccount = new CheckingAccount();
 
-        System.out.println("Сберегательный счет, id: " + savingsAccount.getId());
+        System.out.println("Сберегательный счет: ");
         savingsAccount.pay(10);
         savingsAccount.transfer(checkingAccount,5);
         savingsAccount.addMoney(10);
         savingsAccount.transfer(checkingAccount,5);
 
         System.out.println();
-        System.out.println("Кредитный счет, id: " + creditAccount.getId());
+        System.out.println("Кредитный счет: ");
         creditAccount.pay(10);
         creditAccount.transfer(savingsAccount,5);
         creditAccount.addMoney(16);
@@ -19,7 +19,7 @@ public class Test {
         creditAccount.transfer(savingsAccount,5);
 
         System.out.println();
-        System.out.println("Расчетный счет, id: " + checkingAccount.getId());
+        System.out.println("Расчетный счет: ");
         System.out.println("Баланс: " + checkingAccount.getBalance());
         checkingAccount.pay(10);
         checkingAccount.transfer(savingsAccount,5);

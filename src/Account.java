@@ -1,14 +1,6 @@
 public abstract class Account {
-    private String id;
-    private int balance;
+    protected int balance;
 
-    Account(String id) {
-        this.id = id;
-    }
-
-    public String getId() {
-        return id;
-    }
     public int getBalance() {
         return balance;
     }
